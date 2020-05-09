@@ -4,14 +4,15 @@ version: 0.2
 phases:
   pre_build:
     commands:
-    - echo "Entered the pre-build phase"
+    - echo "Entered the pre-build phase on " `date`
   build:
     commands:
-    - echo "Entered build phase"
-    - mvn clean package
+    - echo "Entered build phase on " `date`
+    - mvn clean test package
   post_build:
     commands:
-    - echo "Entered the post-build phase"
+    - echo "Entered the post-build phase on " `date`
 artifacts:
   files:
     - target/*.jar
+  discard-paths: yes

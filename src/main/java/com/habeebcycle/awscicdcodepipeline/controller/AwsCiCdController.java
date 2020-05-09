@@ -22,4 +22,11 @@ public class AwsCiCdController {
                 "Habeeb Okunade", "0.0.1-SNAPSHOT", new Date(System.currentTimeMillis()));
         return ResponseEntity.ok(bean);
     }
+
+    @GetMapping("/aws-bean-2/{versionId}")
+    public ResponseEntity<?> getBean2(@PathVariable int versionId){
+        AwsBean bean = new AwsBean(versionId, "AWS CodePipeline CI-CD Example", "AWS-Cloud",
+                "Habeeb Okunade", "0.0.2-SNAPSHOT", new Date(System.currentTimeMillis()));
+        return ResponseEntity.ok(bean);
+    }
 }
