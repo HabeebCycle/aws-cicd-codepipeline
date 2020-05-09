@@ -5,7 +5,7 @@ spring:
     name: aws-cicd-codepipeline
 
 ---
-#This must be explicitly set to avoid nginx and elasticBeanStalk will throw 502 Bad Gateway Error
+#This must be explicitly set to avoid nginx and elasticBeanStalk from throwing 502 Bad Gateway Error
 #We are creating profile for AWS elastic bean stalk for nginx to redirect to port 5000
 spring:
   profiles: elb
