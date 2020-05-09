@@ -1,8 +1,9 @@
 package com.habeebcycle.awscicdcodepipeline;
 
 import com.habeebcycle.awscicdcodepipeline.model.AwsBean;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.http.ResponseEntity;
@@ -25,6 +26,12 @@ class AwsCicdCodepipelineApplicationTests {
         String urlString = "http://localhost:" + randomServerPort + "/aws-bean/" + versionId;
         System.out.println(randomServerPort);
         return restTemplate.getForEntity(urlString, AwsBean.class);
+    }
+
+    @BeforeEach
+    void isUpAndRunning(){
+        String status = restTemplate.getForObject("http://localhost:" + randomServerPort, String.class);
+        assertEquals("UP", status);
     }
 
     @Test
